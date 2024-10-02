@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login Page</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap-icons.css" rel="stylesheet" type="text/css">
+    <link href="css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <style>
+       body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+           background-image: url(images/login.jpg);
+           background-size: cover;
+           background-position: center;
+           background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            min-height: 100vh; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .card{
+            margin-right: 425px;
+        }
+        .card-login {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            width: 100%;
+        }
+
+        .header {
+            color: #333;
+            font-weight: bold;
+        }
+
+        .form-control {
+            border-radius: 5px;
+            padding: 12px 20px;
+            box-shadow: none;
+        }
+
+        .btn-wd {
+            width: 100%;
+            border-radius: 25px;
+            background: linear-gradient(to bottom, #fbe2c3 0%, rgba(244, 155, 131, 0.7) );
+            border: none;
+            color: white;
+        }  
+         .form-check-label {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .form-label {
+            font-weight: 500;
+            color: #444;
+        }
+
+    </style>
+</head>
+<body>
+    <section>
+        <div class="login"></div>
+        <div class="container d-flex justify-content-center align-items-center">
+            <div class="col-md-4 col-sm-6">
+                <form class="form" id="loginForm" method="POST">
+                    <div class="card card-login">
+                        <div class="card-header my-3">
+                            <h3 class="header text-center">Login</h3>
+                        </div>
+                        <div class="card-body">
+                            <!-- Email Input -->
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Please enter a valid email address">
+                            </div>
+                            <!-- Password Input -->
+                            <div class="col-auto">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password" required minlength="6" title="Password must be at least 6 characters long">
+                            </div>
+                        </div>
+                        <!-- Submit Button -->
+                        <div class="mx-auto">
+                            <button type="submit" class="btn btn-wd fs-14 my-4" id="loginBtn">Login</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/jquery-3.6.4.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+        const text = "Login"; 
+        let index = 0;
+        const typingSpeed = 100;
+
+        function typeText() {
+            if (index < text.length) {
+                document.getElementById("typing-text").innerHTML += text.charAt(index);
+                index++;
+                setTimeout(typeText, typingSpeed);
+            }
+        }
+
+        window.onload = function() {
+            typeText();
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            if (email === "admin@gmail.com" && password === "admin123") {
+                window.location.href = 'index.html'; 
+            } else {
+                alert("Invalid email or password. Please try again.");
+            }
+        });
+    </script>
+</body>
+</html>
